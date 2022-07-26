@@ -12,6 +12,10 @@ public class FileEventLogger implements EventLogger {
 
     private File file;
 
+    public FileEventLogger(String fileName) {
+        this.fileName = fileName;
+    }
+
     public void init() throws IOException {
         this.file = new File(fileName);
         file.canWrite();
@@ -19,6 +23,10 @@ public class FileEventLogger implements EventLogger {
 
     @Override
     public void logEvent(Event event) {
-//        FileUtils.writeStringToFile();
+        try {
+            FileUtils.writeStringToFile(file, "\n" + event.toString(), true);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

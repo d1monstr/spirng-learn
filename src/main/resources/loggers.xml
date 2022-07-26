@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+ 		http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+    <bean id="event" class="examples.first.core.beans.Event" scope="prototype">
+        <constructor-arg>
+            <bean class="java.util.Date"/>
+        </constructor-arg>
+        <constructor-arg ref="dateFormat"/>
+    </bean>
+
+    <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance"/>
+
+    <bean id="eventLogger" class="examples.first.core.loggers.ConsoleEventLogger"/>
+
+    <bean id="fileEventLogger" class="examples.first.core.loggers.FileEventLogger" init-method="init">
+        <constructor-arg type="java.lang.String" value="src/main/resources/logs.txt"/>
+    </bean>
+
+    <bean id="cacheFileEventLogger" class="examples.first.core.loggers.CacheFileEventLogger" parent="fileEventLogger"
+          destroy-method="destroy">
+        <constructor-arg type="java.lang.Integer" value="2"/>
+    </bean>
+
+    <bean id="combinedEventLogger" class="examples.first.core.loggers.CombinedEventLogger">
+        <constructor-arg>
+            <list>
+                <ref bean="eventLogger"/>
+                <ref bean="fileEventLogger"/>
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>

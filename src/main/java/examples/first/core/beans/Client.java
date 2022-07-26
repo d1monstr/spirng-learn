@@ -3,6 +3,7 @@ package examples.first.core.beans;
 public class Client {
     private Integer id;
     private String fullName;
+    private String greetings;
 
     public Client(Integer id, String fullName) {
         this.id = id;
@@ -23,5 +24,13 @@ public class Client {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public void setGreetings(String greetings) {
+        this.greetings = greetings;
+    }
+
+    public String getGreetings() {
+        return greetings;
     }
 }

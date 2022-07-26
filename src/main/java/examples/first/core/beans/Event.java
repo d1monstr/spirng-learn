@@ -2,6 +2,7 @@ package examples.first.core.beans;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.Random;
 
 public class Event {
 
@@ -13,6 +14,7 @@ public class Event {
     public Event(Date date, DateFormat df) {
         this.date = date;
         this.df = df;
+        this.id = new Random().nextInt();
     }
 
     public String getMsg() {
