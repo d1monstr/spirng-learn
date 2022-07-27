@@ -1,20 +1,20 @@
 package examples.first.core.beans;
 
 public class Client {
-    private Integer id;
+    private String id;
     private String fullName;
     private String greetings;
 
-    public Client(Integer id, String fullName) {
+    public Client(String id, String fullName) {
         this.id = id;
         this.fullName = fullName;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

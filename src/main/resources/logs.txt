@@ -1,0 +1,3 @@
+
+Event{id=186229196, msg='Some event for 2', date=28 июл. 2022 г., 0:29:44}
+Event{id=186229196, msg='Some event for 3', date=28 июл. 2022 г., 0:29:44}
