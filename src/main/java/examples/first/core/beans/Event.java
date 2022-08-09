@@ -1,6 +1,7 @@
 package examples.first.core.beans;
 
 import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
@@ -10,6 +11,8 @@ public class Event {
     private String msg;
     private final Date date;
     private final DateFormat df;
+
+    static Calendar calendar = Calendar.getInstance();
 
     public Event(Date date, DateFormat df) {
         this.date = date;
@@ -23,6 +26,12 @@ public class Event {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+
+    public static boolean isDay() {
+        int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+        return currentHour >= 8 && currentHour < 17;
     }
 
     @Override
